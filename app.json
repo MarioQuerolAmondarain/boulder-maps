@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "test",
-    "slug": "test",
+    "name": "boulder-maps",
+    "slug": "boulder-maps",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "test",
+    "scheme": "boulder-maps",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
