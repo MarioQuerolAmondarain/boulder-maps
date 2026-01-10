@@ -1,7 +1,7 @@
 import AreaCard from "@/components/AreaCard";
 import { AREAS } from "@/data/areas";
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
   const areas = AREAS;
@@ -14,6 +14,10 @@ export default function Index() {
           <AreaCard key={area.name} area={area} />
         ))}
       </View>
+      <View style={styles.missingAreaContainer}>
+        <Text>Can&apos;t find your bouldering area?</Text>
+        <Text>Please contact us to add it!</Text>
+      </View>
     </ScrollView>
   );
 }
@@ -25,5 +29,12 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     textAlign: "left",
     padding: 10,
+  },
+  missingAreaContainer: {
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    opacity: 0.5,
   },
 });
