@@ -1,4 +1,4 @@
-import { InfoIcon, MapIcon } from "@/components/Icons";
+import { MapIcon } from "@/components/Icons";
 import { Area } from "@/types";
 import { Link } from "expo-router";
 import React from "react";
@@ -8,13 +8,6 @@ export default function AreaCard({ area }: { area: Area }) {
   return (
     <View style={styles.card}>
       <View style={styles.content}>
-        <Text style={styles.title}>{area.name}</Text>
-        <Text style={styles.description}>{area.province}</Text>
-        <Text style={styles.description}>
-          Boulders: {area.boulders} - {area.rockType}
-        </Text>
-      </View>
-      <View style={styles.buttons}>
         <Link
           asChild
           href={{
@@ -23,9 +16,16 @@ export default function AreaCard({ area }: { area: Area }) {
           }}
         >
           <Pressable>
-            <InfoIcon />
+            <Text style={styles.title}>{area.name}</Text>
+            <Text style={styles.description}>{area.province}</Text>
+            <Text style={styles.description}>
+              Boulders: {area.boulders} - {area.rockType}
+            </Text>
           </Pressable>
         </Link>
+      </View>
+
+      <View style={styles.buttons}>
         <Link
           asChild
           href={{
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    borderRadius: 1,
   },
   buttons: {
     flexDirection: "row",
