@@ -7,6 +7,7 @@ export default function Index() {
   const areas = AREAS;
 
   return (
+    // TODO Add filtering, sorting in the future
     <ScrollView>
       <View style={styles.container}>
         {areas.map((area) => (

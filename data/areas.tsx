@@ -8,7 +8,6 @@ export const AREAS: Area[] = [
     boulders: 150,
     coordinates: { latitude: 42.8125, longitude: -1.6458 },
     rockType: RockType.Limestone,
-    imgUrl: "https://example.com/images/larraona.jpg",
   },
   {
     name: "Santa Gadea",
@@ -16,7 +15,20 @@ export const AREAS: Area[] = [
     boulders: 400,
     coordinates: { latitude: 42.7261, longitude: -0.3275 },
     rockType: RockType.Sandstone,
-    imgUrl: "https://example.com/images/santa_gadea.jpg",
+  },
+  {
+    name: "Rozas",
+    province: "Cantabria",
+    boulders: 140,
+    coordinates: { latitude: 42.7261, longitude: -0.3275 },
+    rockType: RockType.Sandstone,
+  },
+  {
+    name: "Mañaria",
+    province: "Bizkaia",
+    boulders: 50,
+    coordinates: { latitude: 43.1667, longitude: -2.8667 },
+    rockType: RockType.Limestone,
   },
 ];
 

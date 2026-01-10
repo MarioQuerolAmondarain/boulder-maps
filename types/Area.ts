@@ -4,22 +4,19 @@ export class Area {
   boulders: number;
   coordinates: { latitude: number; longitude: number };
   rockType: RockType;
-  imgUrl: string;
 
   constructor(
     name: string,
     province: string,
     boulders: number,
     coordinates: { latitude: number; longitude: number },
-    rockType: RockType,
-    imgUrl: string
+    rockType: RockType
   ) {
     this.name = name;
     this.province = province;
     this.boulders = boulders;
     this.coordinates = coordinates;
     this.rockType = rockType;
-    this.imgUrl = imgUrl;
   }
 }
 
