@@ -1,4 +1,4 @@
-import { Area } from "@/types";
+import { Area, RockType } from "@/types";
 import { AreaDetails, PointOfInterestType } from "../types/AreaDetails";
 
 export const AREAS: Area[] = [
@@ -7,7 +7,7 @@ export const AREAS: Area[] = [
     province: "Navarra",
     boulders: 150,
     coordinates: { latitude: 42.8125, longitude: -1.6458 },
-    rockType: "Limestone",
+    rockType: RockType.Limestone,
     imgUrl: "https://example.com/images/larraona.jpg",
   },
   {
@@ -15,7 +15,7 @@ export const AREAS: Area[] = [
     province: "Cantabria",
     boulders: 400,
     coordinates: { latitude: 42.7261, longitude: -0.3275 },
-    rockType: "Sandstone",
+    rockType: RockType.Sandstone,
     imgUrl: "https://example.com/images/santa_gadea.jpg",
   },
 ];

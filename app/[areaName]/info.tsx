@@ -1,7 +1,9 @@
 import { MapIcon } from "@/components/Icons";
+import { getAreaDetails } from "@/services/AreaService";
+import { AreaDetails } from "@/types/AreaDetails";
 import { Link, useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useLayoutEffect } from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, View } from "react-native";
 
 export default function AreaInfo() {
   const navigation = useNavigation();
@@ -30,5 +32,32 @@ export default function AreaInfo() {
     });
   }, [navigation, areaName]);
 
-  return <Text>{areaName}</Text>;
+  const areaDetails: AreaDetails = getAreaDetails(areaName!);
+
+  if (!areaDetails) {
+    return (
+      <View>
+        <Text>No information is available for this site yet. 😔</Text>
+        <Text>
+          Help us improve it! If you have information, please contact us.
+        </Text>
+      </View>
+    );
+  }
+
+  return (
+    <View>
+      <Text>{areaDetails.name}</Text>
+      <Text>{areaDetails.description}</Text>
+      <Text>Points of Interest:</Text>
+      {areaDetails.pointsOfInterest.map((poi) => (
+        <View key={poi.name}>
+          <Text>
+            {poi.name} ({poi.type}) - {poi.coordinates.latitude} ,{" "}
+            {poi.coordinates.longitude}
+          </Text>
+        </View>
+      ))}
+    </View>
+  );
 }

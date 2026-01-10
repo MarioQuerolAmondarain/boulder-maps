@@ -1,4 +1,5 @@
-import { MapIcon } from "@/components/Icons";
+import { LocationIcon, MapIcon, ProblemsIcon } from "@/components/Icons";
+import RockTypeChip from "@/components/RockTypeChip";
 import { Area } from "@/types";
 import { Link } from "expo-router";
 import React from "react";
@@ -16,11 +17,23 @@ export default function AreaCard({ area }: { area: Area }) {
           }}
         >
           <Pressable>
-            <Text style={styles.title}>{area.name}</Text>
-            <Text style={styles.description}>{area.province}</Text>
-            <Text style={styles.description}>
-              Boulders: {area.boulders} - {area.rockType}
-            </Text>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
+            >
+              <Text style={styles.title}>{area.name}</Text>
+              <RockTypeChip rockType={area.rockType} />
+            </View>
+
+            <View style={{ flexDirection: "row", marginTop: 5, gap: 15 }}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <LocationIcon />
+                <Text style={styles.description}>{area.province}</Text>
+              </View>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <ProblemsIcon />
+                <Text style={styles.description}>{area.boulders}</Text>
+              </View>
+            </View>
           </Pressable>
         </Link>
       </View>

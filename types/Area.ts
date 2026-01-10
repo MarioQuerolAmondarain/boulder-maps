@@ -3,7 +3,7 @@ export class Area {
   province: string;
   boulders: number;
   coordinates: { latitude: number; longitude: number };
-  rockType: string;
+  rockType: RockType;
   imgUrl: string;
 
   constructor(
@@ -11,7 +11,7 @@ export class Area {
     province: string,
     boulders: number,
     coordinates: { latitude: number; longitude: number },
-    rockType: string,
+    rockType: RockType,
     imgUrl: string
   ) {
     this.name = name;
@@ -21,4 +21,12 @@ export class Area {
     this.rockType = rockType;
     this.imgUrl = imgUrl;
   }
+}
+
+export enum RockType {
+  Granite = "Granite",
+  Limestone = "Limestone",
+  Sandstone = "Sandstone",
+  Conglomerate = "Conglomerate",
+  Basalt = "Basalt",
 }
