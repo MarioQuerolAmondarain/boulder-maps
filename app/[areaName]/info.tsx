@@ -5,7 +5,10 @@ import { Pressable, Text } from "react-native";
 
 export default function AreaInfo() {
   const navigation = useNavigation();
-  const { areaName } = useLocalSearchParams();
+  const params = useLocalSearchParams();
+  const areaName = Array.isArray(params.areaName)
+    ? params.areaName[0]
+    : params.areaName;
 
   useLayoutEffect(() => {
     navigation.setOptions({
