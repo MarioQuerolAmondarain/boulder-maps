@@ -1,7 +1,7 @@
-import { InfoIcon } from "@/components/Icons";
+import { InfoIcon, InstagramIcon } from "@/components/Icons";
 import Logo from "@/components/Logo";
 import { Link, Stack } from "expo-router";
-import { Pressable } from "react-native";
+import { Pressable, View } from "react-native";
 
 export default function RootLayout() {
   return (
@@ -11,11 +11,22 @@ export default function RootLayout() {
         headerTitle: "",
         headerLeft: () => <Logo />,
         headerRight: () => (
-          <Link asChild href="/about">
-            <Pressable>
-              <InfoIcon />
+          <View style={{ flexDirection: "row", gap: 15 }}>
+            <Link asChild href="/about">
+              <Pressable>
+                <InfoIcon />
+              </Pressable>
+            </Link>
+            {/* <Link asChild href="/https://www.instagram.com/bouldermapsapp/"> */}
+            <Pressable
+              onPress={() => {
+                alert("We are working on it! 🚧");
+              }}
+            >
+              <InstagramIcon />
             </Pressable>
-          </Link>
+            {/* </Link> */}
+          </View>
         ),
       }}
     />

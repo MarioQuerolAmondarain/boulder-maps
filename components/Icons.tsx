@@ -19,6 +19,11 @@ export const SetterIcon = (props: any) => (
 export const SearchIcon = (props: any) => (
   <Ionicons name="search" size={30} {...props} />
 );
+
 export const MapIcon = (props: any) => (
   <Ionicons name="map" size={30} {...props} />
+);
+
+export const InstagramIcon = (props: any) => (
+  <Ionicons name="logo-instagram" size={30} color="black" />
 );
