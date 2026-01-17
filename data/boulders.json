@@ -1,12 +1,92 @@
 [
-  { "id": 1, "long": -2.992666, "lat": 43.34254 },
-  { "id": 2, "long": -2.993123, "lat": 43.34289 },
-  { "id": 3, "long": -2.991543, "lat": 43.34156 },
-  { "id": 4, "long": -2.994212, "lat": 43.34321 },
-  { "id": 5, "long": -2.990876, "lat": 43.34212 },
-  { "id": 6, "long": -2.995534, "lat": 43.34098 },
-  { "id": 7, "long": -2.989912, "lat": 43.34401 },
-  { "id": 8, "long": -2.992098, "lat": 43.33954 },
-  { "id": 9, "long": -2.993876, "lat": 43.34512 },
-  { "id": 10, "long": -2.991234, "lat": 43.34187 }
+  {
+    "id": 1,
+    "longitude": -2.992666,
+    "latitude": 43.34254,
+    "grade": "6a",
+    "name": "The Crusher",
+    "description": "Start in the big hold",
+    "tags": ["overhang", "technical", "morpho"]
+  },
+  {
+    "id": 2,
+    "longitude": -2.993123,
+    "latitude": 43.34289,
+    "grade": "5c",
+    "name": "Easy Climb",
+    "description": "A nice warm-up route",
+    "tags": ["slab", "beginner"]
+  },
+  {
+    "id": 3,
+    "longitude": -2.991543,
+    "latitude": 43.34156,
+    "grade": "7b",
+    "name": "The Beast",
+    "description": "A challenging route",
+    "tags": ["overhang", "powerful"]
+  },
+  {
+    "id": 4,
+    "longitude": -2.994212,
+    "latitude": 43.34321,
+    "grade": "6c",
+    "name": "The Edge",
+    "description": "A route with sharp edges",
+    "tags": ["technical", "edges"]
+  },
+  {
+    "id": 5,
+    "longitude": -2.990876,
+    "latitude": 43.34212,
+    "grade": "5b",
+    "name": "The Slab",
+    "description": "A smooth slab climb",
+    "tags": ["slab", "beginner"]
+  },
+  {
+    "id": 6,
+    "longitude": -2.995534,
+    "latitude": 43.34098,
+    "grade": "7a",
+    "name": "The Overhang",
+    "description": "A steep overhang route",
+    "tags": ["overhang", "powerful"]
+  },
+  {
+    "id": 7,
+    "longitude": -2.989912,
+    "latitude": 43.34401,
+    "grade": "6b",
+    "name": "The Crack",
+    "description": "A route with a prominent crack",
+    "tags": ["crack", "technical"]
+  },
+  {
+    "id": 8,
+    "longitude": -2.992098,
+    "latitude": 43.33954,
+    "grade": "5a",
+    "name": "The Beginner's Luck",
+    "description": "A perfect route for beginners",
+    "tags": ["beginner", "easy"]
+  },
+  {
+    "id": 9,
+    "longitude": -2.993876,
+    "latitude": 43.34512,
+    "grade": "6a+",
+    "name": "The Traverse",
+    "description": "A horizontal traverse route",
+    "tags": ["traverse", "technical"]
+  },
+  {
+    "id": 10,
+    "longitude": -2.991234,
+    "latitude": 43.34187,
+    "grade": "7c",
+    "name": "The Pinnacle",
+    "description": "A route that reaches the pinnacle",
+    "tags": ["pinnacle", "challenging"]
+  }
 ]

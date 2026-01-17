@@ -1,5 +1,8 @@
+import bouldersJson from "@/data/boulders.json";
+import { useBoulder } from "@/providers/BoulderProvider";
 import Mapbox, {
   Camera,
+  CircleLayer,
   Images,
   LocationPuck,
   MapView,
@@ -24,6 +27,7 @@ export default function AreaMap() {
     })();
   }, []);
 
+  // TODO Refactor to use <Stack.Screen options={{ title: 'Details' }} />
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: `${areaName} - Map`,
@@ -31,6 +35,18 @@ export default function AreaMap() {
       headerRight: () => null,
     });
   }, [navigation, areaName]);
+
+  const boulderPoints = bouldersJson.map((boulder) =>
+    point([boulder.longitude, boulder.latitude], { boulder })
+  );
+
+  const { setSelectedBoulder } = useBoulder();
+
+  const onPointPress = async (e: any) => {
+    if (e.features[0]?.properties?.boulder) {
+      setSelectedBoulder(e.features[0].properties.boulder);
+    }
+  };
 
   return (
     <MapView style={styles.map} styleURL="mapbox://styles/mapbox/outdoors-v12">
@@ -43,13 +59,44 @@ export default function AreaMap() {
 
       <ShapeSource
         id="boulders"
-        shape={featureCollection([point([-2.992666, 43.34254])])}
+        cluster
+        shape={featureCollection(boulderPoints)}
+        onPress={onPointPress}
       >
         <SymbolLayer
+          id="cluster-count"
+          filter={["has", "point_count"]}
+          style={{
+            textField: ["get", "point_count"],
+            textSize: 16,
+            textColor: "white",
+            textIgnorePlacement: true,
+            textAllowOverlap: true,
+          }}
+        />
+
+        <CircleLayer
+          id="cluster"
+          belowLayerID="cluster-count"
+          filter={["has", "point_count"]}
+          style={{
+            circlePitchAlignment: "map",
+            circleColor: "blue",
+            circleRadius: 20,
+            circleOpacity: 1,
+            circleStrokeWidth: 2,
+            circleStrokeColor: "white",
+          }}
+        />
+
+        <SymbolLayer
           id="boulder-icons"
+          filter={["!", ["has", "point_count"]]}
           style={{
             iconImage: "pin",
             iconSize: 0.5,
+            iconAllowOverlap: true,
+            iconAnchor: "bottom",
           }}
         />
 
