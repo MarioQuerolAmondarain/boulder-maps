@@ -1,3 +1,4 @@
+import SelectedBoulderSheet from "@/components/BottomSheet";
 import BoulderMarkers from "@/components/BoulderMarkers";
 import Mapbox, { Camera, LocationPuck, MapView } from "@rnmapbox/maps";
 import * as Location from "expo-location";
@@ -27,19 +28,30 @@ export default function AreaMap() {
   }, [navigation, areaName]);
 
   return (
-    <MapView style={styles.map} styleURL="mapbox://styles/mapbox/outdoors-v12">
-      <Camera
-        zoomLevel={13}
-        animationDuration={0}
-        centerCoordinate={[-2.992666, 43.34254]}
-      />
-      <LocationPuck puckBearingEnabled puckBearing="heading" />
+    <>
+      <MapView
+        style={styles.map}
+        styleURL="mapbox://styles/mapbox/outdoors-v12"
+      >
+        <Camera
+          zoomLevel={13}
+          animationDuration={0}
+          centerCoordinate={[-2.992666, 43.34254]}
+        />
+        <LocationPuck
+          puckBearingEnabled
+          pulsing={{ isEnabled: true }}
+          puckBearing="heading"
+        />
 
-      <BoulderMarkers />
-      {/* PARKINGS */}
-      {/* SECTORS */}
-      {/* PATHS */}
-    </MapView>
+        <BoulderMarkers />
+        {/* PARKINGS */}
+        {/* SECTORS */}
+        {/* PATHS */}
+      </MapView>
+
+      <SelectedBoulderSheet />
+    </>
   );
 }
 
