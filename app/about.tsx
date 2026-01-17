@@ -1,6 +1,6 @@
 import { useNavigation } from "expo-router";
 import { useLayoutEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 export default function About() {
   const navigation = useNavigation();
@@ -28,6 +28,22 @@ export default function About() {
         inclusive and supportive climbing community ❤️
       </Text>
 
+      <Text style={styles.title}>The team</Text>
+      <View style={styles.memberContainer}>
+        <Image
+          source={require("../assets/images/about/mario.png")}
+          style={styles.avatar}
+        />
+        <View style={styles.memberInfo}>
+          <Text style={styles.memberName}>Mario</Text>
+          <Text style={styles.memberDescription}>
+            Mario is a passionate climber who decided to chip in by creating
+            this app to help other climbers discover areas that were previously
+            difficult to find.
+          </Text>
+        </View>
+      </View>
+
       <Text style={styles.title}>Do you want to collaborate?</Text>
       <Text style={styles.description}>
         Boulder Maps is an open-source project, and we welcome contributions
@@ -36,8 +52,10 @@ export default function About() {
       </Text>
       <Text style={styles.description}>
         Also if you love to open new areas of bouldering and want to see them in
-        the app, you can help us by sharing the information about the area. And
-        we can grant you access to Setter tools.
+        the app, you can help us by sharing the information about the area.
+      </Text>
+      <Text style={styles.description}>
+        And we can grant you access to Setter tools.
       </Text>
 
       <Text
@@ -77,5 +95,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "left",
     marginBottom: 20,
+  },
+  memberContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  avatar: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginRight: 15,
+  },
+  memberInfo: {
+    flex: 1,
+  },
+  memberName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  memberDescription: {
+    fontSize: 14,
+    textAlign: "left",
   },
 });
