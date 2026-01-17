@@ -1,5 +1,5 @@
-import SelectedBoulderSheet from "@/components/BottomSheet";
 import BoulderMarkers from "@/components/BoulderMarkers";
+import SelectedBoulderSheet from "@/components/SelectedBoulderSheet";
 import Mapbox, { Camera, LocationPuck, MapView } from "@rnmapbox/maps";
 import * as Location from "expo-location";
 import { useLocalSearchParams, useNavigation } from "expo-router";

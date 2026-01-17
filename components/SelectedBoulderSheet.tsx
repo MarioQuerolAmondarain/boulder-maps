@@ -1,7 +1,8 @@
 import { useBoulder } from "@/providers/BoulderProvider";
+import { Boulder } from "@/types/Boulder";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import React, { useEffect } from "react";
-import { Text } from "react-native";
+import BoulderSheetView from "./BoulderSheetView";
 
 export default function SelectedBoulderSheet() {
   const { selectedBoulder } = useBoulder();
@@ -21,17 +22,7 @@ export default function SelectedBoulderSheet() {
       enablePanDownToClose
     >
       <BottomSheetView>
-        {/* TODO refactorizar en un componente separado y dar estilo */}
-        <Text>
-          {selectedBoulder ? selectedBoulder.name : "No Boulder Selected"}
-        </Text>
-        <Text>{selectedBoulder ? selectedBoulder.description : ""}</Text>
-        <Text>
-          {selectedBoulder ? `Difficulty: ${selectedBoulder.grade}` : ""}
-        </Text>
-        {selectedBoulder.tags?.map((tag: any) => (
-          <Text key={tag}>- {tag}</Text>
-        ))}
+        <BoulderSheetView {...(selectedBoulder as Boulder)} />
       </BottomSheetView>
     </BottomSheet>
   );
