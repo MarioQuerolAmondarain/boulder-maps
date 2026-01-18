@@ -1,7 +1,22 @@
 import bouldersJson from "@/data/boulders.json";
 import { useBoulder } from "@/providers/BoulderProvider";
-import { CircleLayer, Images, ShapeSource, SymbolLayer } from "@rnmapbox/maps";
+import { CircleLayer, ShapeSource, SymbolLayer } from "@rnmapbox/maps";
 import { featureCollection, point } from "@turf/helpers";
+
+function getColor(boulder: (typeof bouldersJson)[0]): string {
+  switch (boulder.grade[0]) {
+    case "8":
+      return "#ff00ff";
+    case "7":
+      return "#ff5555";
+    case "6":
+      return "#ffaa00";
+    case "5":
+      return "#55ff55";
+    default:
+      return "gray";
+  }
+}
 
 export default function BoulderMarkers() {
   const { setSelectedBoulder } = useBoulder();
@@ -13,9 +28,18 @@ export default function BoulderMarkers() {
   };
 
   const boulderPoints = bouldersJson.map((boulder) =>
-    point([boulder.longitude, boulder.latitude], { boulder })
+    point([boulder.longitude, boulder.latitude], {
+      boulder,
+      color: getColor(boulder),
+    }),
   );
 
+  /*
+   TODO ver tema de layers para que se puedan hacer overlaps los bloques y que a cierto zoom out 
+   se vean mejor los clusters con los nombres de los sectores
+
+   Tambien que el que este seleccionado se vea diferente
+  */
   return (
     <ShapeSource
       id="boulders"
@@ -41,7 +65,7 @@ export default function BoulderMarkers() {
         filter={["has", "point_count"]}
         style={{
           circlePitchAlignment: "map",
-          circleColor: "blue",
+          circleColor: "green",
           circleRadius: 20,
           circleOpacity: 1,
           circleStrokeWidth: 2,
@@ -49,21 +73,17 @@ export default function BoulderMarkers() {
         }}
       />
 
-      <SymbolLayer
+      <CircleLayer
         id="boulder-icons"
+        belowLayerID="cluster"
         filter={["!", ["has", "point_count"]]}
         style={{
-          iconImage: "pin",
-          iconSize: 0.5,
-          iconAllowOverlap: true,
-          iconAnchor: "bottom",
-        }}
-      />
-
-      {/* TODO refactor para que sea un circulo y dependendiendo del grado sea un color u otro */}
-      <Images
-        images={{
-          pin: require("../assets/images/pin.png"),
+          circlePitchAlignment: "map",
+          circleColor: ["get", "color"],
+          circleRadius: 9,
+          circleOpacity: 1,
+          circleStrokeWidth: 2,
+          circleStrokeColor: "transparent",
         }}
       />
     </ShapeSource>

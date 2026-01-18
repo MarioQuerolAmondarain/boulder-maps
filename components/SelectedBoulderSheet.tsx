@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import BoulderSheetView from "./BoulderSheetView";
 
 export default function SelectedBoulderSheet() {
-  const { selectedBoulder } = useBoulder();
+  const { selectedBoulder, setSelectedBoulder } = useBoulder() as any;
   const bottomSheetRef = React.useRef<BottomSheet>(null);
 
   useEffect(() => {
@@ -18,8 +18,10 @@ export default function SelectedBoulderSheet() {
     <BottomSheet
       ref={bottomSheetRef}
       index={-1}
-      snapPoints={["50%"]}
+      snapPoints={["65%"]}
       enablePanDownToClose
+      handleStyle={{ display: "none" }}
+      onClose={() => setSelectedBoulder(null)}
     >
       <BottomSheetView>
         <BoulderSheetView {...(selectedBoulder as Boulder)} />
