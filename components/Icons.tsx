@@ -36,3 +36,11 @@ export const LocationIcon = (props: any) => (
 export const ProblemsIcon = (props: any) => (
   <Ionicons name="book-sharp" size={24} color="#ccc7c7" {...props} />
 );
+
+export const ShareIcon = (props: any) => (
+  <Ionicons name="share-social-outline" size={30} color="black" {...props} />
+);
+
+export const HeartIcon = (props: any) => (
+  <Ionicons name="heart-outline" size={30} color="black" {...props} />
+);

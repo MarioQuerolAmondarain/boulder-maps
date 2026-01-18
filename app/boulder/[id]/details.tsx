@@ -8,6 +8,7 @@ export default function BoulderDetails() {
     ? JSON.parse(boulderData as string)
     : null;
 
+  // TODO mostrar mas info del bloque y estilar
   return (
     <>
       <Stack.Screen

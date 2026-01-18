@@ -1,8 +1,7 @@
 import { Boulder } from "@/types/Boulder";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { Link } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { InfoIcon } from "./Icons";
+import { HeartIcon, InfoIcon, ShareIcon } from "./Icons";
 
 export default function BoulderSheetView(boulder: Boulder) {
   return (
@@ -28,7 +27,7 @@ export default function BoulderSheetView(boulder: Boulder) {
         </View>
       </View>
 
-      <View style={styles.actionsContainer}>
+      <View style={styles.buttonsContainer}>
         <Link
           asChild
           href={{
@@ -37,18 +36,27 @@ export default function BoulderSheetView(boulder: Boulder) {
           }}
         >
           <TouchableOpacity style={styles.actionButton}>
-            <InfoIcon size={24} color="black" />
-            <Text style={styles.actionText}>Info</Text>
+            <InfoIcon size={29} color="black" />
+            <Text style={styles.actionText}>Details</Text>
           </TouchableOpacity>
         </Link>
-        <TouchableOpacity style={styles.actionButton}>
-          {/* TODO añadir a icons */}
-          <Ionicons name="heart-outline" size={24} color="black" />
-          <Text style={styles.actionText}>Me gusta</Text>
+
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={() => {
+            alert("We are working on it! 🚧"); // TODO
+          }}
+        >
+          <HeartIcon size={29} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton}>
-          <Ionicons name="share-social-outline" size={24} color="black" />
-          <Text style={styles.actionText}>Compartir</Text>
+
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={() => {
+            alert("We are working on it! 🚧"); // TODO
+          }}
+        >
+          <ShareIcon size={29} color="black" />
         </TouchableOpacity>
       </View>
     </View>
@@ -110,21 +118,25 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 12,
   },
-  actionsContainer: {
+  buttonsContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    gap: 25,
     paddingVertical: 12,
     borderTopWidth: 1,
     borderTopColor: "#eee",
     backgroundColor: "white",
   },
   actionButton: {
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
   actionText: {
-    fontSize: 12,
-    marginTop: 4,
+    fontSize: 16,
     color: "#333",
+    marginLeft: 6,
   },
 });
