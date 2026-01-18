@@ -19,7 +19,7 @@ function getColor(boulder: (typeof bouldersJson)[0]): string {
 }
 
 export default function BoulderMarkers() {
-  const { setSelectedBoulder } = useBoulder();
+  const { selectedBoulder, setSelectedBoulder } = useBoulder();
 
   const onPointPress = async (e: any) => {
     if (e.features[0]?.properties?.boulder) {
@@ -31,14 +31,13 @@ export default function BoulderMarkers() {
     point([boulder.longitude, boulder.latitude], {
       boulder,
       color: getColor(boulder),
+      isSelected: selectedBoulder?.id === boulder.id,
     }),
   );
 
   /*
    TODO ver tema de layers para que se puedan hacer overlaps los bloques y que a cierto zoom out 
    se vean mejor los clusters con los nombres de los sectores
-
-   Tambien que el que este seleccionado se vea diferente
   */
   return (
     <ShapeSource
@@ -82,8 +81,13 @@ export default function BoulderMarkers() {
           circleColor: ["get", "color"],
           circleRadius: 9,
           circleOpacity: 1,
-          circleStrokeWidth: 2,
-          circleStrokeColor: "transparent",
+          circleStrokeWidth: ["case", ["get", "isSelected"], 3, 2],
+          circleStrokeColor: [
+            "case",
+            ["get", "isSelected"],
+            "white",
+            "transparent",
+          ],
         }}
       />
     </ShapeSource>
