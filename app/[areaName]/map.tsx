@@ -2,14 +2,13 @@ import BoulderMarkers from "@/components/BoulderMarkers";
 import SelectedBoulderSheet from "@/components/SelectedBoulderSheet";
 import Mapbox, { Camera, LocationPuck, MapView } from "@rnmapbox/maps";
 import * as Location from "expo-location";
-import { useLocalSearchParams, useNavigation } from "expo-router";
-import React, { useEffect, useLayoutEffect } from "react";
+import { Stack, useLocalSearchParams } from "expo-router";
+import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN || "");
 
 export default function AreaMap() {
-  const navigation = useNavigation();
   const { areaName } = useLocalSearchParams();
 
   useEffect(() => {
@@ -18,17 +17,15 @@ export default function AreaMap() {
     })();
   }, []);
 
-  // TODO Refactor to use <Stack.Screen options={{ title: 'Details' }} />
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTitle: `${areaName} - Map`,
-      headerLeft: () => null,
-      headerRight: () => null,
-    });
-  }, [navigation, areaName]);
-
   return (
     <>
+      <Stack.Screen
+        options={{
+          headerTitle: `${areaName} - Map`,
+          headerLeft: () => null,
+          headerRight: () => null,
+        }}
+      />
       <MapView
         style={styles.map}
         styleURL="mapbox://styles/mapbox/outdoors-v12"

@@ -5,6 +5,7 @@ import { Link, useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useLayoutEffect } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
+// TODO: Refactor
 export default function AreaInfo() {
   const navigation = useNavigation();
   const params = useLocalSearchParams();
