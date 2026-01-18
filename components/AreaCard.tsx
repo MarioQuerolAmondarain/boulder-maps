@@ -3,7 +3,7 @@ import RockTypeChip from "@/components/RockTypeChip";
 import { Area } from "@/types";
 import { Link } from "expo-router";
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function AreaCard({ area }: { area: Area }) {
   return (
@@ -16,7 +16,7 @@ export default function AreaCard({ area }: { area: Area }) {
             params: { areaName: area.name },
           }}
         >
-          <Pressable>
+          <TouchableOpacity>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
             >
@@ -34,7 +34,7 @@ export default function AreaCard({ area }: { area: Area }) {
                 <Text style={styles.description}>{area.boulders}</Text>
               </View>
             </View>
-          </Pressable>
+          </TouchableOpacity>
         </Link>
       </View>
 
@@ -47,9 +47,9 @@ export default function AreaCard({ area }: { area: Area }) {
           }}
           style={{ marginRight: 15 }}
         >
-          <Pressable>
+          <TouchableOpacity>
             <MapIcon />
-          </Pressable>
+          </TouchableOpacity>
         </Link>
       </View>
     </View>

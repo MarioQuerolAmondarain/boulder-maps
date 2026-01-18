@@ -3,7 +3,7 @@ import Logo from "@/components/Logo";
 import BoulderProvider from "@/providers/BoulderProvider";
 import { Link, Stack } from "expo-router";
 import React from "react";
-import { Pressable, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function RootLayout() {
@@ -19,18 +19,18 @@ export default function RootLayout() {
             headerRight: () => (
               <View style={{ flexDirection: "row", gap: 15 }}>
                 <Link asChild href="/about">
-                  <Pressable>
+                  <TouchableOpacity>
                     <InfoIcon />
-                  </Pressable>
+                  </TouchableOpacity>
                 </Link>
                 {/* <Link asChild href="/https://www.instagram.com/bouldermapsapp/"> */}
-                <Pressable
+                <TouchableOpacity
                   onPress={() => {
                     alert("We are working on it! 🚧");
                   }}
                 >
                   <InstagramIcon />
-                </Pressable>
+                </TouchableOpacity>
                 {/* </Link> */}
               </View>
             ),
