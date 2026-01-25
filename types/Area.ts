@@ -4,13 +4,20 @@ export class Area {
   boulders: number;
   coordinates: { latitude: number; longitude: number };
   rockType: RockType;
+  description?: string;
+  pointsOfInterest?: {
+    name: string;
+    type: string;
+    coordinates: { latitude: number; longitude: number };
+  }[];
+  restrictions?: string[];
 
   constructor(
     name: string,
     province: string,
     boulders: number,
     coordinates: { latitude: number; longitude: number },
-    rockType: RockType
+    rockType: RockType,
   ) {
     this.name = name;
     this.province = province;

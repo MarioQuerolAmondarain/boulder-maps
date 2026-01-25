@@ -1,83 +1,67 @@
 import { MapIcon } from "@/components/Icons";
-import { getAreaDetails } from "@/services/AreaService";
-import { AreaDetails } from "@/types/AreaDetails";
-import { Link, useLocalSearchParams, useNavigation } from "expo-router";
-import React, { useLayoutEffect } from "react";
+import { Area } from "@/types";
+import { Link, Redirect, Stack, useLocalSearchParams } from "expo-router";
+import React from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
-// TODO: Refactor
 export default function AreaInfo() {
-  const navigation = useNavigation();
-  const params = useLocalSearchParams();
-  const areaName = Array.isArray(params.areaName)
-    ? params.areaName[0]
-    : params.areaName;
+  const { areaData } = useLocalSearchParams();
+  const area: Area = areaData ? JSON.parse(areaData as string) : null;
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTitle: `${areaName} - Información`,
-      headerLeft: () => null,
-      headerRight: () => (
-        <Link
-          asChild
-          href={{
-            pathname: "/[areaName]/map",
-            params: { areaName: areaName },
-          }}
-        >
-          <Pressable>
-            <MapIcon />
-          </Pressable>
-        </Link>
-      ),
-    });
-  }, [navigation, areaName]);
-
-  const areaDetails: AreaDetails = getAreaDetails(areaName!);
-
-  if (!areaDetails) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.notFoundText}>
-          Aún no hay información disponible para esta zona. 😔
-        </Text>
-        <Text style={styles.bodyText}>
-          ¡Ayúdanos a mejorarla! Si tienes información, por favor contáctanos.
-        </Text>
-      </View>
-    );
+  if (!area) {
+    return <Redirect href="/noinfo" />;
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>{areaDetails.name}</Text>
-      <Text style={styles.description}>{areaDetails.description}</Text>
+    <>
+      <Stack.Screen
+        options={{
+          headerTitle: `${area.name}`,
+          headerLeft: () => null,
+          headerRight: () => (
+            <Link
+              asChild
+              href={{
+                pathname: "/[areaName]/map",
+                params: { areaName: area?.name },
+              }}
+            >
+              <Pressable>
+                <MapIcon />
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
+      <ScrollView style={styles.container}>
+        <Text style={styles.description}>{area.description}</Text>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Puntos de interés</Text>
-        {areaDetails.pointsOfInterest.map((poi) => (
-          <View key={poi.name} style={styles.listItem}>
-            <Text style={styles.itemTitle}>
-              {poi.name} <Text style={styles.itemType}>({poi.type})</Text>
-            </Text>
-            <Text style={styles.itemDetails}>
-              {poi.coordinates.latitude}, {poi.coordinates.longitude}
-            </Text>
-          </View>
-        ))}
-      </View>
-
-      {areaDetails.restrictions && areaDetails.restrictions.length > 0 && (
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Restricciones</Text>
-          {areaDetails.restrictions.map((restriction, index) => (
-            <View key={index} style={styles.listItem}>
-              <Text style={styles.bodyText}>• {restriction}</Text>
+          <Text style={styles.sectionTitle}>Puntos de interés</Text>
+          {area.pointsOfInterest?.map((poi) => (
+            <View key={poi.name} style={styles.listItem}>
+              <Text style={styles.itemTitle}>
+                {poi.name} <Text style={styles.itemType}>({poi.type})</Text>
+              </Text>
+              <Text style={styles.itemDetails}>
+                {poi.coordinates.latitude}, {poi.coordinates.longitude}
+              </Text>
             </View>
           ))}
         </View>
-      )}
-    </ScrollView>
+
+        {area.restrictions && area.restrictions.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Restricciones</Text>
+            {area.restrictions.map((restriction, index) => (
+              <View key={index} style={styles.listItem}>
+                <Text style={styles.bodyText}>• {restriction}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+      </ScrollView>
+    </>
   );
 }
 

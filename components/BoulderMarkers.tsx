@@ -27,6 +27,7 @@ export default function BoulderMarkers() {
     }
   };
 
+  // TODO Recuperar boulders de servicio
   const boulderPoints = bouldersJson.map((boulder) =>
     point([boulder.longitude, boulder.latitude], {
       boulder,

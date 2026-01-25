@@ -1,13 +1,12 @@
 import AreaCard from "@/components/AreaCard";
-import { AREAS } from "@/data/areas";
+import { getAllAreas } from "@/services/AreaService";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
-  const areas = AREAS;
+  const areas = getAllAreas();
 
   return (
-    // TODO Add filtering, sorting in the future
     <ScrollView>
       <View style={styles.container}>
         {areas.map((area) => (

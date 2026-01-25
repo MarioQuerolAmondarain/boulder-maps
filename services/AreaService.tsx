@@ -1,6 +1,6 @@
-import { AREA_DETAILS } from "@/data/areas";
-import { AreaDetails } from "@/types/AreaDetails";
+import { AREAS } from "@/data/areas";
+import { Area } from "@/types";
 
-export const getAreaDetails = (name: string): AreaDetails => {
-  return AREA_DETAILS.find((area) => area.name === name)!;
+export const getAllAreas = (): Area[] => {
+  return AREAS;
 };

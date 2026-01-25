@@ -13,7 +13,7 @@ export default function AreaCard({ area }: { area: Area }) {
           asChild
           href={{
             pathname: "/[areaName]/info",
-            params: { areaName: area.name },
+            params: { areaName: area.name, areaData: JSON.stringify(area) },
           }}
         >
           <TouchableOpacity>
@@ -43,7 +43,7 @@ export default function AreaCard({ area }: { area: Area }) {
           asChild
           href={{
             pathname: "/[areaName]/map",
-            params: { areaName: area.name },
+            params: { areaName: area.name, areaData: JSON.stringify(area) },
           }}
           style={{ marginRight: 15 }}
         >

@@ -1,6 +1,7 @@
 import BoulderMarkers from "@/components/BoulderMarkers";
 import SelectedBoulderSheet from "@/components/SelectedBoulderSheet";
 import { useBoulder } from "@/providers/BoulderProvider";
+import { Area } from "@/types";
 import Mapbox, { Camera, LocationPuck, MapView } from "@rnmapbox/maps";
 import * as Location from "expo-location";
 import { Stack, useLocalSearchParams, useNavigation } from "expo-router";
@@ -10,7 +11,8 @@ import { StyleSheet } from "react-native";
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN || "");
 
 export default function AreaMap() {
-  const { areaName } = useLocalSearchParams();
+  const { areaData } = useLocalSearchParams();
+  const area: Area = areaData ? JSON.parse(areaData as string) : {};
   const { setSelectedBoulder } = useBoulder();
   const navigation = useNavigation();
 
@@ -31,7 +33,7 @@ export default function AreaMap() {
     <>
       <Stack.Screen
         options={{
-          headerTitle: `${areaName} - Mapa`,
+          headerTitle: `${area.name} - Mapa`,
           headerLeft: () => null,
           headerRight: () => null,
         }}
@@ -41,9 +43,12 @@ export default function AreaMap() {
         styleURL="mapbox://styles/mapbox/outdoors-v12"
       >
         <Camera
-          zoomLevel={13}
+          zoomLevel={10}
           animationDuration={0}
-          centerCoordinate={[-2.992666, 43.34254]}
+          centerCoordinate={[
+            area.coordinates.longitude,
+            area.coordinates.latitude,
+          ]}
         />
         <LocationPuck
           puckBearingEnabled
