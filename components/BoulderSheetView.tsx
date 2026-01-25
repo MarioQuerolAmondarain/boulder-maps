@@ -13,7 +13,7 @@ export default function BoulderSheetView(boulder: Boulder) {
       <View style={styles.contentContainer}>
         <View style={styles.header}>
           <Text style={styles.title}>
-            {boulder?.name ? boulder.name : "No Boulder Selected"}
+            {boulder?.name ? boulder.name : "Ningún bloque seleccionado"}
           </Text>
           <Text style={styles.grade}>{boulder?.grade}</Text>
         </View>
@@ -37,14 +37,14 @@ export default function BoulderSheetView(boulder: Boulder) {
         >
           <TouchableOpacity style={styles.actionButton}>
             <InfoIcon size={29} color="black" />
-            <Text style={styles.actionText}>Details</Text>
+            <Text style={styles.actionText}>Detalles</Text>
           </TouchableOpacity>
         </Link>
 
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => {
-            alert("We are working on it! 🚧"); // TODO
+            alert("¡Estamos trabajando en ello! 🚧"); // TODO
           }}
         >
           <HeartIcon size={29} color="black" />

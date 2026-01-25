@@ -13,7 +13,7 @@ export default function BoulderDetails() {
     <>
       <Stack.Screen
         options={{
-          headerTitle: "Boulder Details",
+          headerTitle: "Detalles del Bloque",
           headerLeft: () => null,
           headerRight: () => null, // Boton de share/like?
         }}

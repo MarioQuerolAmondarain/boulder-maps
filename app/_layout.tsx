@@ -26,7 +26,7 @@ export default function RootLayout() {
                 {/* <Link asChild href="/https://www.instagram.com/bouldermapsapp/"> */}
                 <TouchableOpacity
                   onPress={() => {
-                    alert("We are working on it! 🚧");
+                    alert("¡Estamos trabajando en ello! 🚧");
                   }}
                 >
                   <InstagramIcon />

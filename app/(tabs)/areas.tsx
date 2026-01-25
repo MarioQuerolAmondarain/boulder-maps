@@ -15,8 +15,8 @@ export default function Index() {
         ))}
       </View>
       <View style={styles.missingAreaContainer}>
-        <Text>Can&apos;t find your bouldering area?</Text>
-        <Text>Please contact us to add it!</Text>
+        <Text>¿No encuentras tu zona de escalada?</Text>
+        <Text>¡Contáctanos para añadirla!</Text>
       </View>
     </ScrollView>
   );

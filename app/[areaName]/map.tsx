@@ -31,7 +31,7 @@ export default function AreaMap() {
     <>
       <Stack.Screen
         options={{
-          headerTitle: `${areaName} - Map`,
+          headerTitle: `${areaName} - Mapa`,
           headerLeft: () => null,
           headerRight: () => null,
         }}

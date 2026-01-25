@@ -15,7 +15,7 @@ export default function AreaInfo() {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: `${areaName} - Info`,
+      headerTitle: `${areaName} - Información`,
       headerLeft: () => null,
       headerRight: () => (
         <Link
@@ -39,10 +39,10 @@ export default function AreaInfo() {
     return (
       <View style={styles.container}>
         <Text style={styles.notFoundText}>
-          No information is available for this site yet. 😔
+          Aún no hay información disponible para esta zona. 😔
         </Text>
         <Text style={styles.bodyText}>
-          Help us improve it! If you have information, please contact us.
+          ¡Ayúdanos a mejorarla! Si tienes información, por favor contáctanos.
         </Text>
       </View>
     );
@@ -54,7 +54,7 @@ export default function AreaInfo() {
       <Text style={styles.description}>{areaDetails.description}</Text>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Points of Interest</Text>
+        <Text style={styles.sectionTitle}>Puntos de interés</Text>
         {areaDetails.pointsOfInterest.map((poi) => (
           <View key={poi.name} style={styles.listItem}>
             <Text style={styles.itemTitle}>
@@ -69,7 +69,7 @@ export default function AreaInfo() {
 
       {areaDetails.restrictions && areaDetails.restrictions.length > 0 && (
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Restrictions</Text>
+          <Text style={styles.sectionTitle}>Restricciones</Text>
           {areaDetails.restrictions.map((restriction, index) => (
             <View key={index} style={styles.listItem}>
               <Text style={styles.bodyText}>• {restriction}</Text>

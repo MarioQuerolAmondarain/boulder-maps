@@ -36,7 +36,7 @@ export const AREA_DETAILS: AreaDetails[] = [
   {
     name: "Larraona",
     description:
-      "Larraona is a vibrant neighborhood known for its lively atmosphere, diverse culture, and beautiful parks. It offers a mix of modern amenities and historical charm, making it a popular destination for both locals and tourists.",
+      "Larraona es un barrio vibrante conocido por su atmósfera animada, cultura diversa y hermosos parques. Ofrece una mezcla de comodidades modernas y encanto histórico, haciéndolo un destino popular tanto para locales como para turistas.", // Translation of placeholder
     pointsOfInterest: [
       {
         name: "Central Park",
@@ -44,16 +44,19 @@ export const AREA_DETAILS: AreaDetails[] = [
         coordinates: { latitude: 42.813, longitude: -1.646 },
       },
       {
-        name: "Larraona Museum",
+        name: "Museo de Larraona",
         type: PointOfInterestType.WaterPoint,
         coordinates: { latitude: 42.812, longitude: -1.645 },
       },
       {
-        name: "Downtown Shopping Center",
+        name: "Centro Comercial del Centro",
         type: PointOfInterestType.Supermarket,
         coordinates: { latitude: 42.811, longitude: -1.644 },
       },
     ],
-    restrictions: ["No loud music after 10 PM", "No smoking in public parks"],
+    restrictions: [
+      "Prohibida la música alta después de las 10 PM",
+      "Prohibido fumar en parques públicos",
+    ],
   },
 ];

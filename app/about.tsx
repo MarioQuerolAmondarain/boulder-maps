@@ -7,7 +7,7 @@ export default function About() {
     <>
       <Stack.Screen
         options={{
-          headerTitle: "What's Boulder Maps?",
+          headerTitle: "¿Qué es Boulder Maps?",
           headerLeft: () => null,
           headerRight: () => null,
         }}
@@ -19,19 +19,19 @@ export default function About() {
           contentContainerStyle={styles.contentContainer}
         >
           <Text style={styles.description}>
-            Boulder Maps is an app designed to help climbers discover and
-            navigate bouldering locations. Explore routes, track your progress,
-            and connect with the climbing community.
+            Boulder Maps es una aplicación diseñada para ayudar a los
+            escaladores a descubrir y navegar por sectores de boulder. Explora
+            rutas, sigue tu progreso y conéctate con la comunidad.
           </Text>
 
-          <Text style={styles.title}>Why free?</Text>
+          <Text style={styles.title}>¿Por qué gratis?</Text>
           <Text style={styles.description}>
-            We believe that access to climbing information should be free for
-            everyone. By keeping Boulder Maps free, we aim to foster a more
-            inclusive and supportive climbing community ❤️
+            Creemos que el acceso a la información de escalada debe ser gratuito
+            para todos. Al mantener Boulder Maps gratis, aspiramos a fomentar
+            una comunidad de escalada más inclusiva y solidaria ❤️
           </Text>
 
-          <Text style={styles.title}>The team</Text>
+          <Text style={styles.title}>El equipo</Text>
           <View style={styles.memberContainer}>
             <Image
               source={require("../assets/images/about/mario.png")}
@@ -40,26 +40,26 @@ export default function About() {
             <View style={styles.memberInfo}>
               <Text style={styles.memberName}>Mario</Text>
               <Text style={styles.memberDescription}>
-                Mario is a passionate climber who decided to chip in by creating
-                this app to help other climbers discover areas that were
-                previously difficult to find.
+                Mario es un escalador apasionado que decidió contribuir creando
+                esta aplicación para ayudar a otros escaladores a descubrir
+                áreas que antes eran difíciles de encontrar.
               </Text>
             </View>
           </View>
 
-          <Text style={styles.title}>Do you want to collaborate?</Text>
+          <Text style={styles.title}>¿Quieres colaborar?</Text>
           <Text style={styles.description}>
-            Boulder Maps is an open-source project, and we welcome contributions
-            from the community. If you&apos;re interested in helping out, please
-            text us.
+            Boulder Maps es un proyecto de código abierto y damos la bienvenida
+            a las contribuciones de la comunidad. Si estás interesado en ayudar,
+            por favor escríbenos.
           </Text>
           <Text style={styles.description}>
-            Also if you love to open new areas of bouldering and want to see
-            them in the app, you can help us by sharing the information about
-            the area.
+            También si te encanta abrir nuevas áreas de boulder y quieres verlas
+            en la aplicación, puedes ayudarnos compartiendo la información sobre
+            el área.
           </Text>
           <Text style={styles.description}>
-            And we can grant you access to Setter tools.
+            Y podemos otorgarte acceso a las herramientas de Setter.
           </Text>
 
           <Text
@@ -68,7 +68,7 @@ export default function About() {
               fontSize: 16,
             }}
           >
-            See you on the rocks! 😁
+            ¡Nos vemos en el sector! 😁
           </Text>
           <Text
             style={{
@@ -76,8 +76,9 @@ export default function About() {
               color: "gray",
             }}
           >
-            BoulderMaps Team
+            El equipo de BoulderMaps
           </Text>
+          <View style={{ height: 80 }} />
         </ScrollView>
 
         <LinearGradient
