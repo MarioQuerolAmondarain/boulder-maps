@@ -3,6 +3,8 @@ import { useBoulder } from "@/providers/BoulderProvider";
 import { CircleLayer, ShapeSource, SymbolLayer } from "@rnmapbox/maps";
 import { featureCollection, point } from "@turf/helpers";
 
+const BOULDERS_MIN_ZOOM = 14;
+
 function getColor(boulder: (typeof bouldersJson)[0]): string {
   switch (boulder.grade[0]) {
     case "8":
@@ -49,6 +51,7 @@ export default function BoulderMarkers() {
     >
       <SymbolLayer
         id="cluster-count"
+        minZoomLevel={BOULDERS_MIN_ZOOM}
         filter={["has", "point_count"]}
         style={{
           textField: ["get", "point_count"],
@@ -61,6 +64,7 @@ export default function BoulderMarkers() {
 
       <CircleLayer
         id="cluster"
+        minZoomLevel={BOULDERS_MIN_ZOOM}
         belowLayerID="cluster-count"
         filter={["has", "point_count"]}
         style={{
@@ -75,6 +79,7 @@ export default function BoulderMarkers() {
 
       <CircleLayer
         id="boulder-icons"
+        minZoomLevel={BOULDERS_MIN_ZOOM}
         belowLayerID="cluster"
         filter={["!", ["has", "point_count"]]}
         style={{
