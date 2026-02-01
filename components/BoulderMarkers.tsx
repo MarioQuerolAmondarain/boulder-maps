@@ -1,6 +1,6 @@
 import bouldersJson from "@/data/boulders.json";
 import { useBoulder } from "@/providers/BoulderProvider";
-import { CircleLayer, ShapeSource, SymbolLayer } from "@rnmapbox/maps";
+import { CircleLayer, ShapeSource } from "@rnmapbox/maps";
 import { featureCollection, point } from "@turf/helpers";
 
 const BOULDERS_MIN_ZOOM = 14;
@@ -38,50 +38,15 @@ export default function BoulderMarkers() {
     }),
   );
 
-  /*
-   TODO ver tema de layers para que se puedan hacer overlaps los bloques y que a cierto zoom out 
-   se vean mejor los clusters con los nombres de los sectores
-  */
   return (
     <ShapeSource
       id="boulders"
-      cluster
       shape={featureCollection(boulderPoints)}
       onPress={onPointPress}
     >
-      <SymbolLayer
-        id="cluster-count"
-        minZoomLevel={BOULDERS_MIN_ZOOM}
-        filter={["has", "point_count"]}
-        style={{
-          textField: ["get", "point_count"],
-          textSize: 16,
-          textColor: "white",
-          textIgnorePlacement: true,
-          textAllowOverlap: true,
-        }}
-      />
-
-      <CircleLayer
-        id="cluster"
-        minZoomLevel={BOULDERS_MIN_ZOOM}
-        belowLayerID="cluster-count"
-        filter={["has", "point_count"]}
-        style={{
-          circlePitchAlignment: "map",
-          circleColor: "green",
-          circleRadius: 20,
-          circleOpacity: 1,
-          circleStrokeWidth: 2,
-          circleStrokeColor: "white",
-        }}
-      />
-
       <CircleLayer
         id="boulder-icons"
         minZoomLevel={BOULDERS_MIN_ZOOM}
-        belowLayerID="cluster"
-        filter={["!", ["has", "point_count"]]}
         style={{
           circlePitchAlignment: "map",
           circleColor: ["get", "color"],

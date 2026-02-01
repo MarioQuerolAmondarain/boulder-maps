@@ -32,7 +32,18 @@ export default function AreaPolygons({
         minZoomLevel={minZoom}
         maxZoomLevel={maxZoom}
         style={{
-          fillColor: "rgba(95, 93, 93, 0.2)",
+          fillColor: "rgba(0, 0, 0, 0.15)",
+          fillOpacity: [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            minZoom,
+            1,
+            maxZoom - 2,
+            0.7,
+            maxZoom,
+            0.3,
+          ],
         }}
       />
       <LineLayer
@@ -40,8 +51,19 @@ export default function AreaPolygons({
         minZoomLevel={minZoom}
         maxZoomLevel={maxZoom}
         style={{
-          lineColor: "rgba(95, 93, 93, 0.8)",
+          lineColor: "rgba(62, 62, 62, 0.9)",
           lineWidth: 2,
+          lineOpacity: [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            minZoom,
+            0.8,
+            maxZoom - 2,
+            0.6,
+            maxZoom,
+            0.1,
+          ],
         }}
       />
       <SymbolLayer
@@ -51,9 +73,9 @@ export default function AreaPolygons({
         style={{
           textField: ["get", "name"],
           textSize: 24,
-          textColor: "rgba(95, 93, 93, 0.8)",
-          textHaloColor: "white",
-          textHaloWidth: 1,
+          textColor: "#1a3a52",
+          textHaloColor: "rgba(255, 255, 255, 0.95)",
+          textHaloWidth: 2,
           textAllowOverlap: false,
         }}
       />
