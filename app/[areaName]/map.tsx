@@ -1,5 +1,7 @@
-import AreaPolygons from "@/components/AreaPolygons";
+import SectorPolygons from "@/components/AreaPolygons";
 import BoulderMarkers from "@/components/BoulderMarkers";
+import ParkingMarkers from "@/components/ParkingMarkers";
+import PathLines from "@/components/PathLines";
 import SelectedBoulderSheet from "@/components/SelectedBoulderSheet";
 import { useBoulder } from "@/providers/BoulderProvider";
 import { Area } from "@/types";
@@ -57,11 +59,10 @@ export default function AreaMap() {
           puckBearing="heading"
         />
 
-        <BoulderMarkers />
-        <AreaPolygons areaName={area.name} />
-        {/* PARKINGS */}
-        {/* SECTORS */}
-        {/* PATHS */}
+        <BoulderMarkers areaId={area.id} />
+        <SectorPolygons areaId={area.id} />
+        <ParkingMarkers areaId={area.id} />
+        <PathLines areaId={area.id} />
       </MapView>
 
       <SelectedBoulderSheet />

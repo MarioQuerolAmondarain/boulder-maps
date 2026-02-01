@@ -1,4 +1,5 @@
 export class Area {
+  id: number;
   name: string;
   province: string;
   boulders: number;
@@ -13,12 +14,14 @@ export class Area {
   restrictions?: string[];
 
   constructor(
+    id: number,
     name: string,
     province: string,
     boulders: number,
     coordinates: { latitude: number; longitude: number },
     rockType: RockType,
   ) {
+    this.id = id;
     this.name = name;
     this.province = province;
     this.boulders = boulders;

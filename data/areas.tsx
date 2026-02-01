@@ -3,6 +3,7 @@ import { PointOfInterestType } from "../types/AreaDetails";
 
 export const AREAS: Area[] = [
   {
+    id: 1,
     name: "Larraona",
     province: "Navarra",
     boulders: 150,
@@ -33,6 +34,7 @@ export const AREAS: Area[] = [
     ],
   },
   {
+    id: 2,
     name: "Santa Gadea",
     province: "Cantabria",
     boulders: 400,
@@ -40,6 +42,7 @@ export const AREAS: Area[] = [
     rockType: RockType.Sandstone,
   },
   {
+    id: 3,
     name: "Rozas",
     province: "Cantabria",
     boulders: 140,
@@ -47,6 +50,7 @@ export const AREAS: Area[] = [
     rockType: RockType.Sandstone,
   },
   {
+    id: 4,
     name: "Mañaria",
     province: "Bizkaia",
     boulders: 50,

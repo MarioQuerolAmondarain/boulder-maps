@@ -20,7 +20,7 @@ function getColor(boulder: (typeof bouldersJson)[0]): string {
   }
 }
 
-export default function BoulderMarkers() {
+export default function BoulderMarkers({ areaId }: { areaId?: number }) {
   const { selectedBoulder, setSelectedBoulder } = useBoulder();
 
   const onPointPress = async (e: any) => {
@@ -30,7 +30,8 @@ export default function BoulderMarkers() {
   };
 
   // TODO Recuperar boulders de servicio
-  const boulderPoints = bouldersJson.map((boulder) =>
+  const boulderArray = areaId === 1 ? bouldersJson : [];
+  const boulderPoints = boulderArray.map((boulder) =>
     point([boulder.longitude, boulder.latitude], {
       boulder,
       color: getColor(boulder),

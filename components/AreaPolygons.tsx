@@ -3,17 +3,18 @@ import { FillLayer, LineLayer, ShapeSource, SymbolLayer } from "@rnmapbox/maps";
 import React, { useMemo } from "react";
 
 type AreaPolygonsProps = {
-  areaName?: string;
+  areaId?: number;
   minZoom?: number;
   maxZoom?: number;
 };
 
 // TODO Revisar valores hardcodeados de minZoom y maxZoom (maxZoom igual que mint zoom de boulders)
-export default function AreaPolygons({
-  areaName,
+export default function SectorPolygons({
+  areaId,
   minZoom = 0,
   maxZoom = 14,
 }: AreaPolygonsProps) {
+  const areaName = areaId === 1 ? "Larraona" : undefined;
   const shape = useMemo(() => {
     if (areaName && AREA_POLYGONS[areaName]) {
       return AREA_POLYGONS[areaName];
