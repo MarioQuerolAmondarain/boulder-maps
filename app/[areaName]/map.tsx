@@ -41,10 +41,7 @@ export default function AreaMap() {
           headerRight: () => null,
         }}
       />
-      <MapView
-        style={styles.map}
-        styleURL="mapbox://styles/mapbox/outdoors-v12"
-      >
+      <MapView style={styles.map} styleURL="mapbox://styles/mapbox/streets-v12">
         <Camera
           zoomLevel={10}
           animationDuration={0}
