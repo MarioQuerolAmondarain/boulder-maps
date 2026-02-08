@@ -46,7 +46,7 @@ export const AREAS: Area[] = [
     name: "Rozas",
     province: "Cantabria",
     boulders: 140,
-    coordinates: { latitude: 37.428353, longitude: -7.246397 },
+    coordinates: { latitude: 43.057, longitude: -3.729723 },
     rockType: RockType.Sandstone,
   },
   {
