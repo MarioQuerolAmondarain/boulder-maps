@@ -1,4 +1,3 @@
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 
@@ -44,8 +43,4 @@ export const ShareIcon = (props: any) => (
 
 export const HeartIcon = (props: any) => (
   <Ionicons name="heart-outline" size={30} color="black" {...props} />
-);
-
-export const ParkingIcon = (props: any) => (
-  <FontAwesome5 name="parking" size={24} color="#1a3a52" {...props} />
 );
