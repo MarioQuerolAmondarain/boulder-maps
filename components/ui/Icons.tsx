@@ -44,3 +44,7 @@ export const ShareIcon = (props: any) => (
 export const HeartIcon = (props: any) => (
   <Ionicons name="heart-outline" size={30} color="black" {...props} />
 );
+
+export const DropdownIcon = (props: any) => (
+  <Ionicons name="chevron-down" size={20} color="black" {...props} />
+);

@@ -1,9 +1,9 @@
-import { MapIcon } from "@/components/ui/Icons";
 import { Area } from "@/types";
-import { Link, Redirect, Stack, useLocalSearchParams } from "expo-router";
+import { Redirect, Stack, useLocalSearchParams } from "expo-router";
 import React from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
+// TODO Refactorizar y estilar
 export default function AreaInfo() {
   const { areaData } = useLocalSearchParams();
   const area: Area = areaData ? JSON.parse(areaData as string) : null;
@@ -18,19 +18,7 @@ export default function AreaInfo() {
         options={{
           headerTitle: `${area.name}`,
           headerLeft: () => null,
-          headerRight: () => (
-            <Link
-              asChild
-              href={{
-                pathname: "/[areaName]/map",
-                params: { areaName: area?.name },
-              }}
-            >
-              <Pressable>
-                <MapIcon />
-              </Pressable>
-            </Link>
-          ),
+          headerRight: () => null,
         }}
       />
       <ScrollView style={styles.container}>

@@ -6,6 +6,7 @@ import React from "react";
 import { TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+// TODO igual refactorizar y que no aparezca siempre el logo en el header
 export default function RootLayout() {
   return (
     <GestureHandlerRootView>
