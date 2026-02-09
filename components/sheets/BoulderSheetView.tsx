@@ -1,7 +1,7 @@
+import { HeartIcon, InfoIcon, ShareIcon } from "@/components/ui/Icons";
 import { Boulder } from "@/types/Boulder";
 import { Link } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { HeartIcon, InfoIcon, ShareIcon } from "./Icons";
 
 export default function BoulderSheetView(boulder: Boulder) {
   return (

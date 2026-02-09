@@ -1,5 +1,5 @@
-import { LocationIcon, MapIcon, ProblemsIcon } from "@/components/Icons";
-import RockTypeChip from "@/components/RockTypeChip";
+import { LocationIcon, MapIcon, ProblemsIcon } from "@/components/ui/Icons";
+import RockTypeChip from "@/components/ui/RockTypeChip";
 import { Area } from "@/types";
 import { Link } from "expo-router";
 import React from "react";

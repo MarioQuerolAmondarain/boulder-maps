@@ -1,8 +1,8 @@
+import BoulderSheetView from "@/components/sheets/BoulderSheetView";
 import { useBoulder } from "@/providers/BoulderProvider";
 import { Boulder } from "@/types/Boulder";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import React, { useEffect } from "react";
-import BoulderSheetView from "./BoulderSheetView";
 
 export default function SelectedBoulderSheet() {
   const { selectedBoulder, setSelectedBoulder } = useBoulder() as any;

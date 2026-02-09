@@ -1,7 +1,7 @@
+import ParkingModal from "@/components/modals/ParkingModal";
 import { PARKING_POINTS } from "@/data/parkingPoints";
 import { Images, ShapeSource, SymbolLayer } from "@rnmapbox/maps";
 import React, { useMemo, useState } from "react";
-import ParkingModal from "./ParkingModal";
 
 const PARKING_MIN_ZOOM = 12;
 
@@ -52,7 +52,7 @@ export default function ParkingMarkers({ areaId }: { areaId?: number }) {
         />
         <Images
           images={{
-            icon: require("../assets/images/parking-icon.png"),
+            icon: require("../../assets/images/parking-icon.png"),
           }}
         />
       </ShapeSource>

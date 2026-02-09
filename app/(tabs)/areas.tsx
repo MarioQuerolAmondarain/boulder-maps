@@ -1,4 +1,4 @@
-import AreaCard from "@/components/AreaCard";
+import AreaCard from "@/components/cards/AreaCard";
 import { getAllAreas } from "@/services/AreaService";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";

@@ -5,7 +5,7 @@ import {
   SearchIcon,
   SetterIcon,
   UserIcon,
-} from "../../components/Icons";
+} from "@/components/ui/Icons";
 
 export default function TabsLayout() {
   return (

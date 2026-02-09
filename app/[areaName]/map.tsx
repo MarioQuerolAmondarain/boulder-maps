@@ -1,9 +1,9 @@
-import SectorPolygons from "@/components/AreaPolygons";
-import BoulderMarkers from "@/components/BoulderMarkers";
+import SectorPolygons from "@/components/map/AreaPolygons";
+import BoulderMarkers from "@/components/map/BoulderMarkers";
+import ParkingMarkers from "@/components/map/ParkingMarkers";
+import PathLines from "@/components/map/PathLines";
 import RockPolygons from "@/components/map/RockPolygons";
-import ParkingMarkers from "@/components/ParkingMarkers";
-import PathLines from "@/components/PathLines";
-import SelectedBoulderSheet from "@/components/SelectedBoulderSheet";
+import SelectedBoulderSheet from "@/components/sheets/SelectedBoulderSheet";
 import { useBoulder } from "@/providers/BoulderProvider";
 import { Area } from "@/types";
 import Mapbox, { Camera, LocationPuck, MapView } from "@rnmapbox/maps";

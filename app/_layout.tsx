@@ -1,5 +1,5 @@
-import { InfoIcon, InstagramIcon } from "@/components/Icons";
-import Logo from "@/components/Logo";
+import { InfoIcon, InstagramIcon } from "@/components/ui/Icons";
+import Logo from "@/components/ui/Logo";
 import BoulderProvider from "@/providers/BoulderProvider";
 import { Link, Stack } from "expo-router";
 import React from "react";

@@ -1,4 +1,4 @@
-import { MapIcon } from "@/components/Icons";
+import { MapIcon } from "@/components/ui/Icons";
 import { Area } from "@/types";
 import { Link, Redirect, Stack, useLocalSearchParams } from "expo-router";
 import React from "react";
