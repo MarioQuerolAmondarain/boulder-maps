@@ -1,5 +1,6 @@
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Octicons from "@expo/vector-icons/Octicons";
 import React from "react";
 
 export const HomeIcon = (props: any) => (
@@ -52,4 +53,12 @@ export const DropdownIcon = (props: any) => (
 
 export const LocationArrowIcon = (props: any) => (
   <FontAwesome6 name="location-arrow" size={24} color="black" {...props} />
+);
+
+export const CheckIcon = (props: any) => (
+  <Ionicons name="checkbox-outline" size={24} color="black" {...props} />
+);
+
+export const VideoIcon = (props: any) => (
+  <Octicons name="video" size={24} color="black" {...props} />
 );
