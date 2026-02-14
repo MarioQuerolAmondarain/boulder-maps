@@ -1,14 +1,28 @@
+import ImageModal from "@/components/modals/ImageModal";
 import { HeartIcon, InfoIcon, ShareIcon } from "@/components/ui/Icons";
 import { Boulder } from "@/types/Boulder";
 import { Link } from "expo-router";
+import { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function BoulderSheetView(boulder: Boulder) {
+  const [isImageOpen, setIsImageOpen] = useState(false);
+
   return (
     <View style={styles.container}>
-      <Image
-        source={{ uri: boulder?.imgUrl || undefined }}
-        style={styles.image}
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => setIsImageOpen(true)}
+      >
+        <Image
+          source={{ uri: boulder?.imgUrl || undefined }}
+          style={styles.image}
+        />
+      </TouchableOpacity>
+      <ImageModal
+        isVisible={isImageOpen}
+        imageUrl={boulder?.imgUrl}
+        onClose={() => setIsImageOpen(false)}
       />
       <View style={styles.contentContainer}>
         <View style={styles.header}>
