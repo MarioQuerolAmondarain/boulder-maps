@@ -1,3 +1,4 @@
+import { BOULDER_POINTS } from "@/data/boulders";
 import bouldersJson from "@/data/boulders.json";
 import { useBoulder } from "@/providers/BoulderProvider";
 import { CircleLayer, ShapeSource } from "@rnmapbox/maps";
@@ -30,7 +31,11 @@ export default function BoulderMarkers({ areaId }: { areaId?: number }) {
   };
 
   // TODO Recuperar boulders de servicio
-  const boulderArray = areaId === 1 ? bouldersJson : [];
+  const boulderArray: any[] = [];
+  if (areaId && BOULDER_POINTS[areaId]) {
+    boulderArray.push(...BOULDER_POINTS[areaId].boulders);
+  }
+
   const boulderPoints = boulderArray.map((boulder) =>
     point([boulder.longitude, boulder.latitude], {
       boulder,

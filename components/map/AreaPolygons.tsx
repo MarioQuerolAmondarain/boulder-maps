@@ -14,13 +14,12 @@ export default function SectorPolygons({
   minZoom = 0,
   maxZoom = 14,
 }: AreaPolygonsProps) {
-  const areaName = areaId === 1 ? "Larraona" : undefined;
   const shape = useMemo(() => {
-    if (areaName && AREA_POLYGONS[areaName]) {
-      return AREA_POLYGONS[areaName];
+    if (areaId && AREA_POLYGONS[areaId]) {
+      return AREA_POLYGONS[areaId];
     }
     return { type: "FeatureCollection", features: [] };
-  }, [areaName]);
+  }, [areaId]);
 
   if (!shape.features?.length) {
     return null;

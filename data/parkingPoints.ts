@@ -24,4 +24,19 @@ export const PARKING_POINTS: Record<number, any> = {
       },
     ],
   },
+  3: {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        properties: {
+          name: "Parking Principal",
+        },
+        geometry: {
+          coordinates: [-3.729723, 43.057],
+          type: "Point",
+        },
+      },
+    ],
+  },
 };
