@@ -1,8 +1,11 @@
 import BoulderSheetView from "@/components/sheets/BoulderSheetView";
 import { useBoulder } from "@/providers/BoulderProvider";
 import { Boulder } from "@/types/Boulder";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import React, { useEffect } from "react";
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
+import React, { useCallback, useEffect } from "react";
 
 export default function SelectedBoulderSheet() {
   const { selectedBoulder, setSelectedBoulder } = useBoulder() as any;
@@ -14,13 +17,26 @@ export default function SelectedBoulderSheet() {
     }
   }, [selectedBoulder]);
 
+  const renderBackdrop = useCallback(
+    (props: any) => (
+      <BottomSheetBackdrop
+        {...props}
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+        pressBehavior="close"
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+      />
+    ),
+    [],
+  );
+
   return (
     <BottomSheet
       ref={bottomSheetRef}
       index={-1}
-      snapPoints={["65%"]}
       enablePanDownToClose
       handleStyle={{ display: "none" }}
+      backdropComponent={renderBackdrop}
       onClose={() => setSelectedBoulder(null)}
     >
       <BottomSheetView>

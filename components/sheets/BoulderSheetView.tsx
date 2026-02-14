@@ -17,7 +17,6 @@ export default function BoulderSheetView(boulder: Boulder) {
           </Text>
           <Text style={styles.grade}>{boulder?.grade}</Text>
         </View>
-        <Text style={styles.description}>{boulder?.description}</Text>
         <View style={styles.tagsContainer}>
           {boulder?.tags?.map((tag: any) => (
             <View key={tag} style={styles.tag}>
@@ -35,28 +34,34 @@ export default function BoulderSheetView(boulder: Boulder) {
             params: { id: boulder.id, boulderData: JSON.stringify(boulder) },
           }}
         >
-          <TouchableOpacity style={styles.actionButton}>
+          <TouchableOpacity style={styles.detailButton}>
             <InfoIcon size={29} color="black" />
-            <Text style={styles.actionText}>Detalles</Text>
+            <Text style={styles.actionText}>Detalle</Text>
           </TouchableOpacity>
         </Link>
 
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => {
-            alert("¡Estamos trabajando en ello! 🚧"); // TODO
+            alert("🚧 ¡Estamos trabajando en ello! 🚧"); // TODO
           }}
         >
-          <HeartIcon size={29} color="black" />
+          <HeartIcon size={29} color={styles.secondaryActionText.color} />
+          <Text style={[styles.actionText, styles.secondaryActionText]}>
+            Favorito
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => {
-            alert("We are working on it! 🚧"); // TODO
+            alert("🚧 ¡Estamos trabajando en ello! 🚧"); // TODO
           }}
         >
-          <ShareIcon size={29} color="black" />
+          <ShareIcon size={29} color={styles.secondaryActionText.color} />
+          <Text style={[styles.actionText, styles.secondaryActionText]}>
+            Compartir
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -120,23 +125,39 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    justifyContent: "flex-end",
+    justifyContent: "space-around",
     alignItems: "center",
     paddingHorizontal: 20,
-    gap: 25,
-    paddingVertical: 12,
-    borderTopWidth: 1,
-    borderTopColor: "#eee",
-    backgroundColor: "white",
+    paddingBottom: 15,
+    paddingTop: 0,
   },
   actionButton: {
+    borderColor: "#1f6feb",
+    borderWidth: 1,
+    borderRadius: 30,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
+  detailButton: {
+    borderColor: "#9cc4ff",
+    borderWidth: 1,
+    borderRadius: 30,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#9cc4ff",
+  },
   actionText: {
-    fontSize: 16,
-    color: "#333",
+    fontSize: 14,
+    color: "#000000",
     marginLeft: 6,
+  },
+  secondaryActionText: {
+    color: "#1f6feb",
   },
 });
