@@ -1,18 +1,10 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { Stack } from "expo-router";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
+// TODO ver en que parte de la app mostralo
 export default function About() {
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerTitle: "¿Qué es Boulder Maps?",
-          headerLeft: () => null,
-          headerRight: () => null,
-        }}
-      />
-
       <View style={{ flex: 1 }}>
         <ScrollView
           style={styles.container}

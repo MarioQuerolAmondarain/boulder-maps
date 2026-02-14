@@ -1,7 +1,8 @@
 import { Area } from "@/types";
-import { Redirect, Stack, useLocalSearchParams } from "expo-router";
+import { Redirect, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 // TODO Refactorizar y estilar
 export default function AreaInfo() {
@@ -13,15 +14,8 @@ export default function AreaInfo() {
   }
 
   return (
-    <>
-      <Stack.Screen
-        options={{
-          headerTitle: `${area.name}`,
-          headerLeft: () => null,
-          headerRight: () => null,
-        }}
-      />
-      <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.description}>{area.description}</Text>
 
         <View style={styles.section}>
@@ -49,15 +43,18 @@ export default function AreaInfo() {
           </View>
         )}
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    padding: 20,
     backgroundColor: "#fff",
+  },
+  container: {
+    flexGrow: 1,
+    padding: 20,
   },
   title: {
     fontSize: 28,

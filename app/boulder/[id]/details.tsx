@@ -1,6 +1,7 @@
 import { Boulder } from "@/types/Boulder";
-import { Stack, useLocalSearchParams } from "expo-router";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function BoulderDetails() {
   const { boulderData } = useLocalSearchParams();
@@ -10,15 +11,8 @@ export default function BoulderDetails() {
 
   // TODO mostrar mas info del bloque y estilar
   return (
-    <>
-      <Stack.Screen
-        options={{
-          headerTitle: "Detalles del Bloque",
-          headerLeft: () => null,
-          headerRight: () => null, // Boton de share/like?
-        }}
-      />
-      <View>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
         {boulder.imgUrl && (
           <Image
             source={{ uri: boulder.imgUrl }}
@@ -26,12 +20,7 @@ export default function BoulderDetails() {
           />
         )}
 
-        <View
-          style={{
-            padding: 20,
-            flex: 1,
-          }}
-        >
+        <View style={styles.content}>
           <View>
             {boulder?.tags?.map((tag: any) => (
               <View key={tag}>
@@ -39,16 +28,30 @@ export default function BoulderDetails() {
               </View>
             ))}
           </View>
-          <Text style={{ fontSize: 24, fontWeight: "bold", marginTop: 10 }}>
-            {boulder.name}
-          </Text>
+          <Text style={styles.title}>{boulder.name}</Text>
           <Text>{boulder.grade}</Text>
           <Text>{boulder.description}</Text>
         </View>
         {/* TODO añadir LOG ASCENT, FRIEND, ASCENSIONS, LINK instagram/youtube */}
-      </View>
-    </>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  container: {
+    flexGrow: 1,
+  },
+  content: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+});
