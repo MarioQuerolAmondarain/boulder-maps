@@ -1,3 +1,4 @@
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 
@@ -47,4 +48,8 @@ export const HeartIcon = (props: any) => (
 
 export const DropdownIcon = (props: any) => (
   <Ionicons name="chevron-down" size={20} color="black" {...props} />
+);
+
+export const LocationArrowIcon = (props: any) => (
+  <FontAwesome6 name="location-arrow" size={24} color="black" {...props} />
 );
