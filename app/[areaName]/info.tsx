@@ -1,5 +1,6 @@
+import GoBackButton from "@/components/ui/GoBackButton";
 import { Area } from "@/types";
-import { Redirect, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,13 +10,26 @@ export default function AreaInfo() {
   const { areaData } = useLocalSearchParams();
   const area: Area = areaData ? JSON.parse(areaData as string) : null;
 
-  if (!area) {
-    return <Redirect href="/noinfo" />;
+  if (!area || !area.description) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <GoBackButton />
+        <ScrollView contentContainerStyle={styles.container}>
+          <Text style={styles.title}>{area.name}</Text>
+          <Text style={styles.bodyText}>
+            Estamos trabajando para agregar detalles sobre esta zona. ¡Vuelve
+            pronto para descubrir más!
+          </Text>
+        </ScrollView>
+      </SafeAreaView>
+    );
   }
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <GoBackButton />
       <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>{area.name}</Text>
         <Text style={styles.description}>{area.description}</Text>
 
         <View style={styles.section}>
@@ -55,6 +69,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
+    paddingTop: 10,
   },
   title: {
     fontSize: 28,
@@ -102,12 +117,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#555",
     lineHeight: 22,
-  },
-  notFoundText: {
-    fontSize: 18,
-    fontWeight: "600",
-    textAlign: "center",
-    marginBottom: 10,
-    color: "#333",
   },
 });
