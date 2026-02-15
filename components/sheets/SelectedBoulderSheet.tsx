@@ -35,7 +35,6 @@ export default function SelectedBoulderSheet() {
       ref={bottomSheetRef}
       index={-1}
       enablePanDownToClose
-      handleStyle={{ display: "none" }}
       backdropComponent={renderBackdrop}
       onClose={() => setSelectedBoulder(null)}
     >

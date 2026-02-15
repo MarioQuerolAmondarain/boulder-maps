@@ -1,12 +1,17 @@
 import ImageModal from "@/components/modals/ImageModal";
+import HorizontalButton, {
+  ACTION_BUTTON_COLOR,
+} from "@/components/ui/HorizontalButton";
+import HorizontalButtonContainer from "@/components/ui/HorizontalButtonContainer";
 import { HeartIcon, InfoIcon, ShareIcon } from "@/components/ui/Icons";
 import { Boulder } from "@/types/Boulder";
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function BoulderSheetView(boulder: Boulder) {
   const [isImageOpen, setIsImageOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
@@ -40,44 +45,29 @@ export default function BoulderSheetView(boulder: Boulder) {
         </View>
       </View>
 
-      <View style={styles.buttonsContainer}>
-        <Link
-          asChild
-          href={{
-            pathname: "/boulder/[id]/details",
-            params: { id: boulder.id, boulderData: JSON.stringify(boulder) },
-          }}
-        >
-          <TouchableOpacity style={styles.detailButton}>
-            <InfoIcon size={29} color="black" />
-            <Text style={styles.actionText}>Detalle</Text>
-          </TouchableOpacity>
-        </Link>
-
-        <TouchableOpacity
-          style={styles.actionButton}
+      <HorizontalButtonContainer style={{ paddingBottom: 15, paddingTop: 5 }}>
+        <HorizontalButton
+          icon={<InfoIcon size={29} />}
+          variant="filled"
+          label="Detalle"
           onPress={() => {
-            alert("🚧 ¡Estamos trabajando en ello! 🚧"); // TODO
+            router.push({
+              pathname: "/boulder/[id]/details",
+              params: { id: boulder.id, boulderData: JSON.stringify(boulder) },
+            });
           }}
-        >
-          <HeartIcon size={29} color={styles.secondaryActionText.color} />
-          <Text style={[styles.actionText, styles.secondaryActionText]}>
-            Favorito
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.actionButton}
-          onPress={() => {
-            alert("🚧 ¡Estamos trabajando en ello! 🚧"); // TODO
-          }}
-        >
-          <ShareIcon size={29} color={styles.secondaryActionText.color} />
-          <Text style={[styles.actionText, styles.secondaryActionText]}>
-            Compartir
-          </Text>
-        </TouchableOpacity>
-      </View>
+        />
+        <HorizontalButton
+          icon={<HeartIcon size={29} color={ACTION_BUTTON_COLOR} />}
+          label="Favorito"
+          onPress={null} // TODO
+        />
+        <HorizontalButton
+          icon={<ShareIcon size={29} color={ACTION_BUTTON_COLOR} />}
+          label="Compartir"
+          onPress={null} // TODO
+        />
+      </HorizontalButtonContainer>
     </View>
   );
 }
@@ -136,42 +126,5 @@ const styles = StyleSheet.create({
   tagText: {
     color: "black",
     fontSize: 12,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    paddingBottom: 15,
-    paddingTop: 0,
-  },
-  actionButton: {
-    borderColor: "#1f6feb",
-    borderWidth: 1,
-    borderRadius: 30,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  detailButton: {
-    borderColor: "#9cc4ff",
-    borderWidth: 1,
-    borderRadius: 30,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#9cc4ff",
-  },
-  actionText: {
-    fontSize: 14,
-    color: "#000000",
-    marginLeft: 6,
-  },
-  secondaryActionText: {
-    color: "#1f6feb",
   },
 });

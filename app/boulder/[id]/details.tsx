@@ -1,4 +1,9 @@
 import ImageModal from "@/components/modals/ImageModal";
+import GoBackButton from "@/components/ui/GoBackButton";
+import HorizontalButton, {
+  ACTION_BUTTON_COLOR,
+} from "@/components/ui/HorizontalButton";
+import HorizontalButtonContainer from "@/components/ui/HorizontalButtonContainer";
 import {
   CheckIcon,
   HeartIcon,
@@ -7,7 +12,8 @@ import {
 } from "@/components/ui/Icons";
 import { Boulder } from "@/types/Boulder";
 import { useLocalSearchParams } from "expo-router";
-import { ReactNode, useCallback, useState } from "react";
+
+import { useState } from "react";
 import {
   Image,
   ScrollView,
@@ -20,19 +26,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function BoulderDetails() {
   const { boulderData } = useLocalSearchParams();
+  const [isImageOpen, setIsImageOpen] = useState(false);
+
   const boulder: Boulder = boulderData
     ? JSON.parse(boulderData as string)
     : null;
-  const [isImageOpen, setIsImageOpen] = useState(false);
   const imageUrl = boulder?.imgUrl;
   const tags = boulder?.tags ?? [];
-  const handlePlaceholderAction = useCallback(() => {
-    alert("🚧 ¡Estamos trabajando en ello! 🚧");
-  }, []);
 
-  // TODO Aniadir boton de volver atras
   return (
     <SafeAreaView style={styles.container}>
+      <GoBackButton />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {imageUrl && (
           <View style={styles.heroWrap}>
@@ -65,55 +69,30 @@ export default function BoulderDetails() {
           </View>
         </View>
 
-        <View style={styles.buttonsContainer}>
-          <ActionButton
-            icon={
-              <CheckIcon size={29} color={styles.secondaryActionText.color} />
-            }
+        <HorizontalButtonContainer
+          style={{ paddingBottom: 20, paddingTop: 20 }}
+        >
+          <HorizontalButton
+            icon={<CheckIcon size={29} color={ACTION_BUTTON_COLOR} />}
             label="Encadenado"
-            onPress={handlePlaceholderAction}
+            onPress={null} // TODO
           />
-          <ActionButton
-            icon={
-              <VideoIcon size={29} color={styles.secondaryActionText.color} />
-            }
+          <HorizontalButton
+            icon={<VideoIcon size={29} color={ACTION_BUTTON_COLOR} />}
             label="Ver videos"
-            onPress={handlePlaceholderAction}
+            onPress={null} // TODO
           />
-          <ActionButton
-            icon={
-              <HeartIcon size={29} color={styles.secondaryActionText.color} />
-            }
-            onPress={handlePlaceholderAction}
+          <HorizontalButton
+            icon={<HeartIcon size={29} color={ACTION_BUTTON_COLOR} />}
+            onPress={null} // TODO
           />
-          <ActionButton
-            icon={
-              <ShareIcon size={29} color={styles.secondaryActionText.color} />
-            }
-            onPress={handlePlaceholderAction}
+          <HorizontalButton
+            icon={<ShareIcon size={29} color={ACTION_BUTTON_COLOR} />}
+            onPress={null} // TODO
           />
-        </View>
+        </HorizontalButtonContainer>
       </ScrollView>
     </SafeAreaView>
-  );
-}
-
-type ActionButtonProps = {
-  icon: ReactNode;
-  label?: string;
-  onPress: () => void;
-};
-
-function ActionButton({ icon, label, onPress }: ActionButtonProps) {
-  return (
-    <TouchableOpacity style={styles.actionButton} onPress={onPress}>
-      {icon}
-      {label ? (
-        <Text style={[styles.actionText, styles.secondaryActionText]}>
-          {label}
-        </Text>
-      ) : null}
-    </TouchableOpacity>
   );
 }
 
@@ -134,7 +113,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    flexGrow: 1,
     paddingBottom: 32,
   },
   heroWrap: {
@@ -189,32 +167,5 @@ const styles = StyleSheet.create({
   tagText: {
     color: "#333",
     fontSize: 12,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    paddingBottom: 15,
-    paddingTop: 35,
-    gap: 5,
-  },
-  actionButton: {
-    borderColor: "#1f6feb",
-    borderWidth: 1,
-    borderRadius: 30,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  actionText: {
-    fontSize: 14,
-    color: "#000000",
-    marginLeft: 6,
-  },
-  secondaryActionText: {
-    color: "#1f6feb",
   },
 });
