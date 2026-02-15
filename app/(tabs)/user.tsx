@@ -1,6 +1,6 @@
+import NotYetView from "@/components/ui/NotYetView";
 import React from "react";
-import { Text } from "react-native";
 
 export default function User() {
-  return <Text>USER</Text>;
+  return <NotYetView />;
 }
